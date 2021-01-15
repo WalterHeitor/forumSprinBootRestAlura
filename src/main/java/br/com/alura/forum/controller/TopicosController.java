@@ -16,18 +16,16 @@ import br.com.alura.forum.repositories.TopicoRepository;
 @RestController
 public class TopicosController {
 
-	
-	//@ResponseBody //com @RestController nao prescisa declara @responsebody.
 	@Autowired
 	private TopicoRepository topicoRepository;
 	@GetMapping("/topicos")
-	public List<TopicoDTO> lista(){
-		/*
-		 * Topico t = new Topico("Dúvida", "Dúvida Spring", new Curso("Spring",
-		 * "Progamação"));
-		 * return TopicoDTO.converter(Arrays.asList(t,t,t,t));
-		 */
-		List<Topico>topicos = topicoRepository.findAll();
-		return TopicoDTO.converter(topicos);
+	public List<TopicoDTO> lista(String nomeCurso){
+		if(nomeCurso == null) {
+			List<Topico>topicos = topicoRepository.findAll();
+			return TopicoDTO.converter(topicos);			
+		}else {
+			List<Topico>topicos = topicoRepository.findByCursoNome(nomeCurso);
+			return TopicoDTO.converter(topicos);
+		}
 	}
 }
