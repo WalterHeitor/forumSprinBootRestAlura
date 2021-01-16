@@ -3,6 +3,9 @@ package br.com.alura.forum.controller;
 import java.net.URI;
 import java.util.List;
 
+import javax.transaction.Transactional;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,12 +43,15 @@ public class TopicosController {
 	}
 	
 	@PostMapping
-	public  ResponseEntity<TopicoDTO> cadastrar ( @RequestBody TopicoForm form,
+	@Transactional
+	public  ResponseEntity<TopicoDTO> cadastrar ( @RequestBody @Valid TopicoForm form,
 			UriComponentsBuilder uriComponentsBuilder) { //anotaçao para indicar ao Spring que vai passar os parametros no corpo da requisiçao.
 		Topico topico = form.converter(cursoRepository);
 		topicoRepository.save(topico);
 		URI uri = uriComponentsBuilder.path("/topicos/{id}").buildAndExpand(topico.getId()).toUri();
 		return ResponseEntity.created(uri).body(new TopicoDTO(topico));//temos que passa o caminho uri, passa no corpo obj DTO.
 	}
+	
+	
 	
 }
