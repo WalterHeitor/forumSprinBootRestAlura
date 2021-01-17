@@ -28,7 +28,7 @@ public class Topico {
 	private Usuario autor;
 	@ManyToOne
 	private Curso curso;
-	@OneToMany(mappedBy = "topico", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "topico",fetch = FetchType.LAZY)
 	private List<Resposta> respostas = new ArrayList<>();
 
 	
