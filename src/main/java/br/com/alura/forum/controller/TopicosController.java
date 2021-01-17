@@ -32,8 +32,8 @@ import br.com.alura.forum.modelo.Topico;
 import br.com.alura.forum.repositories.CursoRepository;
 import br.com.alura.forum.repositories.TopicoRepository;
 
-//@RequestParam int pagina, @RequestParam int qtd, @RequestParam String ordenacao) {		
-//Pageable paginacao = PageRequest.of(pagina, qtd, Direction.ASC, ordenacao);
+//@PageableDefault(sort = id, direction = Direction.DESC,
+// page = 0, size = 10) Pageable paginacao)}
 
 //@Controller
 @RestController
@@ -47,7 +47,8 @@ public class TopicosController {
 
 	@GetMapping
 	public Page<TopicoDTO> lista(@RequestParam(required = false) String nomeCurso,
-		Pageable paginacao){			
+			@RequestParam int pagina, @RequestParam int qtd, @RequestParam String ordenacao) {		
+			Pageable paginacao = PageRequest.of(pagina, qtd, Direction.ASC, ordenacao);			
 		
 		if (nomeCurso == null) {
 			Page<Topico> topicos = topicoRepository.findAll(paginacao);
