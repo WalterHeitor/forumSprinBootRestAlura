@@ -15,6 +15,7 @@ public class Resposta {
 	private String mensagem;
 	@ManyToOne
 	private Topico topico;
+	
 	private LocalDateTime dataCriacao = LocalDateTime.now();
 	@ManyToOne
 	private Usuario autor;
