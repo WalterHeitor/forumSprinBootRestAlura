@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,7 +28,7 @@ public class Topico {
 	private Usuario autor;
 	@ManyToOne
 	private Curso curso;
-	@OneToMany(mappedBy = "topico")
+	@OneToMany(mappedBy = "topico", fetch=FetchType.EAGER)
 	private List<Resposta> respostas = new ArrayList<>();
 
 	
