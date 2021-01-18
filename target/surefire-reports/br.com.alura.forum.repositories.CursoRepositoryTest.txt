@@ -1,10 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: br.com.alura.forum.repositories.CursoRepositoryTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.642 s <<< FAILURE! - in br.com.alura.forum.repositories.CursoRepositoryTest
-deveriaCarregarCursoPorNome  Time elapsed: 0.029 s  <<< ERROR!
-org.springframework.dao.IncorrectResultSizeDataAccessException: query did not return a unique result: 2; nested exception is javax.persistence.NonUniqueResultException: query did not return a unique result: 2
-	at br.com.alura.forum.repositories.CursoRepositoryTest.deveriaCarregarCursoPorNome(CursoRepositoryTest.java:30)
-Caused by: javax.persistence.NonUniqueResultException: query did not return a unique result: 2
-	at br.com.alura.forum.repositories.CursoRepositoryTest.deveriaCarregarCursoPorNome(CursoRepositoryTest.java:30)
-
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.608 s - in br.com.alura.forum.repositories.CursoRepositoryTest
