@@ -16,9 +16,13 @@ import br.com.alura.forum.modelo.Curso;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ActiveProfiles("test")
 class CursoRepositoryTest {
-	
+
 	@Autowired
 	private CursoRepository repository;
+	/*
+	@Autowired
+	private TestEntityManager em;
+	*/
 
 	@Test
 	public void deveriaCarregarCursoPorNome() {
@@ -29,6 +33,13 @@ class CursoRepositoryTest {
 		System.out.println("---------------------------------");
 		System.out.println("nome do Curso : "+curso.getNome());
 		System.out.println("---------------------------------");
+	}
+	
+	@Test
+	public void naoDeveriaCarregarUmCursoCujoNomeNaoEstejaCadastrado() {
+		String nomeCurso = "JPA";
+		Curso curso = repository.findByNome(nomeCurso);
+		Assert.assertNull(curso);
 	}
 
 }
