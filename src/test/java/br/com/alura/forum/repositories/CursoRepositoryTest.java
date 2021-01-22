@@ -25,7 +25,7 @@ class CursoRepositoryTest {
 	private TestEntityManager em;
 	
 
-	@Test
+	//@Test
 	public void deveriaCarregarCursoPorNome() {
 		
 		
@@ -43,7 +43,7 @@ class CursoRepositoryTest {
 		System.out.println("---------------------------------");
 	}
 	
-	@Test
+	//@Test
 	public void naoDeveriaCarregarUmCursoCujoNomeNaoEstejaCadastrado() {
 		String nomeCurso = "JPA";
 		Curso curso = repository.findByNome(nomeCurso);

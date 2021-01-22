@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 @EnableWebSecurity
 @Configuration
-@Profile(value = {"dev"}) //, "test"
+@Profile("dev") //, "test"
 public class DevSecurityConfiguation extends WebSecurityConfigurerAdapter{
 
 	//configuração de autorização por url
@@ -16,7 +16,6 @@ public class DevSecurityConfiguation extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 		.antMatchers("/**").permitAll()
-		.anyRequest().authenticated()
 		.and()
 		.csrf().disable();
 	}
